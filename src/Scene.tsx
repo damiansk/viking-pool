@@ -10,8 +10,10 @@ const cameraSettings = {
   far: 1000,
 };
 
-const modelUrl = process.env.PUBLIC_URL + '/assets/untitled.fbx';
+const modelUrl = process.env.PUBLIC_URL + '/assets/Dance.fbx';
 const textureUrl = process.env.PUBLIC_URL + '/assets/texture.png';
+// const modelUrl = process.env.PUBLIC_URL + '/assets/untitled.fbx';
+// const textureUrl = process.env.PUBLIC_URL + '/assets/texture.png';
 
 const Scene: React.FC<{}> = () => {
   const { camera } = useThree();
@@ -21,9 +23,10 @@ const Scene: React.FC<{}> = () => {
 
   return (
     <>
-      {/* <ambientLight args={[0xffffff]} /> */}
+      <ambientLight args={[0xffffff, .25]} />
+      {/* <axesHelper args={[20]} position={[-150, 50, 100]}/> */}
+      <pointLight args={[0xffffff, 1, 500]} position={[-150, 50, 100]}/>
       <pointLight args={[0xffffff, 1, 500]} position={[50, 50, 50]}/>
-      <pointLight args={[0xffffff, 1, 500]} position={[-50, -50, -50]}/>
       <Suspense fallback={<Spinner />}>
         <ModelFBX modelUrl={modelUrl} textureUrl={textureUrl} />
       </Suspense>
